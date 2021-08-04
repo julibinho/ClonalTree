@@ -92,17 +92,14 @@ def computeCOAR(mapped1, mapped2, matrix, minDist):
 #						Main
 #===================================================================================
 def main():
-	usage = usage = "python MRCA.py -a <nkTree1> -R <R> -b <nkTree2> -L <L> -f <fasta>-o <outputFile> \n"
+	usage = usage = "python MRCA.py -a <nkTree1> -b <nkTree2> -f <fasta>-o <outputFile> \n"
 	parser = OptionParser(usage)
 	parser.add_option("-a", "--nkTree1", dest="nkTree1", help="nk file for gcTree")
-	parser.add_option("-R", "--nk1Rooted", dest="R", help="is it a rooted Tree (0=True, 1=False)")
 	parser.add_option("-b", "--nkTree2", dest="nkTree2", help="nk file for clonalTree")
-	parser.add_option("-L", "--nk2Rooted", dest="L", help="is it a rooted Tree (0=True, 1=False)")
 	parser.add_option("-f", "--fasta", dest="fastaFile", help="fasta file")
-	parser.add_option("-o", "--outputFile", dest="outputFile", help="output file")
 	
 	(options, args) = parser.parse_args()
-	if len(sys.argv) < 9:
+	if len(sys.argv) < 7:
 		parser.error("incorrect number of arguments")
 	
 	
@@ -110,8 +107,8 @@ def main():
 	nkTree2 = options.nkTree2
 	fastaFile = options.fastaFile
 	outputFile = options.outputFile
-	aR = options.R
-	bR = options.L
+	aR = "0"
+	bR = "1"
 
 	aRooted = makeBoolean(aR)
 	bRooted = makeBoolean(bR)
