@@ -21,6 +21,6 @@
 ### Examples
 
 ```
-      # GED - we provide a toy example
+      # GED - we provide a toy example, real data should be executed in a grid cluster
       $ python compareNewickTrees.py  ../Example/trees/A.nk ../Example/trees/B.nk
 ```
