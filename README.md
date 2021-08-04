@@ -86,5 +86,5 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
 
 ## License, Patches, and Ongoing Developements
 
-  * The program is distributed under the ....
+  * The program is distributed under the CeCILL licence 
   * [Feature requests and open issues](https://github.com/julibinho/ClonalTree/issues).
