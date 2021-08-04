@@ -2,7 +2,7 @@
 ### The Correctness Of Ancestral Reconstruction (COAR)
 
 ```
-      $ python COAR.py -a [groundTruth].nk -R 0 -b [inferredTree].nk -L 1 -f [seq_alignment_file].fasta -o [output_file] 
+      $ python COAR.py -a [groundTruth].nk  -b [inferredTree].nk  -f [seq_alignment_file].fasta -o [output_file] 
 ```
 
 
