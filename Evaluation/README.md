@@ -22,5 +22,11 @@
 
 ```
       # GED - we provide a toy example, real data should be executed in a grid cluster
-      $ python compareNewickTrees.py  ../Example/trees/A.nk ../Example/trees/B.nk
+      $ python compareNewickTrees.py  ../Examples/trees/A.nk ../Examples/trees/B.nk
+      
+      #COAR
+      $ python COAR.py ../Examples/trees/GT-30.nk ../Examples/trees/clonalTree-30.nk ../Examples/input/Sim30.fasta
+      
+      #MRCA
+      $ python MRCA.py ../Examples/trees/GT-30.nk ../Examples/trees/clonalTree-30.nk ../Examples/input/Sim30.fasta
 ```
