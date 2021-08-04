@@ -61,7 +61,11 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
   $ python clonalTree.py  -i [seq_alignment_file] -o [output_newick_file] [...options]
 
   ```
-### Arguments [...options]
+### required arguments 
+  * [seq_alignment_file] is alignment of clonally related BCR heavy chain sequences in FASTA format,
+  * [output_newick_file] is output file name
+
+### optional arguments [...options]
 
   * -a 0, if considering abundance, otherwise -a 1
   * -r 0, if performing revision, otherwise -r 1
