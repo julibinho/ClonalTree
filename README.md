@@ -58,12 +58,12 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
    The command line for launching the ClonalTree is:
 
   ```
-  $ python clonalTree.py  -i [seq_alignment_file] -o [seq_alignment_file] [...options]
+  $ python clonalTree.py  -i [seq_alignment_file] -o [output_newick_file] [...options]
 
   ```
-### Arguments
+### Arguments [...options]
 
-  * -a 0, if considering abundance, otherwise , -a 1
+  * -a 0, if considering abundance, otherwise -a 1
   * -r 0, if performing revision, otherwise -r 1
   * -t 0, if performing trimming tree, otherwise -t 1
 
