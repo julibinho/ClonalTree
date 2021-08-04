@@ -14,7 +14,7 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
     * By the sequence ID repetition in the alignment, or
     * By integrating the abundance of each sequence in its ID, for instance, the sequence SeqX with an abundance of 12 will have the following ID:
       >SeqX@12
-  * See [example input files](https://github.com/julibinho/ClonalTree/Example/Input)
+  * See [example input files](https://github.com/julibinho/ClonalTree/Examples/input/)
 
 ## Outputs
 
@@ -23,7 +23,7 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
     - [repertoire_name].nk : the reconstructed BCR lineage tree in [newick format](https://en.wikipedia.org/wiki/Newick_format) 
 
     - [repertoire_name].nk.csv :  a table in csv format, containing the parent relationship and cost.
-  * See [example output files](https://github.com/julibinho/ClonalTree/Example/Output)
+  * See [example output files](https://github.com/julibinho/ClonalTree/Example/output)
 
      
       
