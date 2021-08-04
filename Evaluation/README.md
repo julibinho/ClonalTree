@@ -25,8 +25,8 @@
       $ python compareNewickTrees.py  ../Examples/trees/A.nk ../Examples/trees/B.nk
       
       #COAR
-      $ python COAR.py ../Examples/trees/30_1.GT.naive.nk ../Examples/trees/30_1.clonalTree.nk ../Examples/input/30_1.clonalTree.nk
+      $ python COAR.py -a ../Examples/trees/30_1.GT.naive.nk -b ../Examples/trees/30_1.clonalTree.nk -f ../Examples/input/30_1.fasta
       
       #MRCA
-      $ python MRCA.py ../Examples/trees/30_1.GT.naive.nk ../Examples/trees/30_1.clonalTree.nk ../Examples/input/30_1.clonalTree.nk
+      $ python MRCA.py -a ../Examples/trees/30_1.GT.naive.nk -b ../Examples/trees/30_1.clonalTree.nk -f ../Examples/input/30_1.fasta
 ```
