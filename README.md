@@ -12,8 +12,8 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
  
   * The alignment of clonally related BCR heavy chain sequences in FASTA format. The naive B cell heavy chain sequence must be included in the alignment, named as "naive". There are ways to provide the genotype abundance for each sequence :
     * By the sequence ID repetition in the alignment, or
-    * By integrating the abundance of each sequence in its ID, for instance, the sequence SeqX with an abundance of 12 will have the following ID:
-      >SeqX@12
+    * By integrating the abundance of each sequence in its ID, for instance, the sequence Seq1 with an abundance of 6 will have the following ID:
+      >Seq1@6
   * See [example input files](https://github.com/julibinho/ClonalTree/tree/main/Examples/input)
 
 ## Outputs
