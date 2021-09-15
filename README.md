@@ -74,7 +74,7 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
 
   For instance the following command can be run in the src/ folder:
   ```
-  $ python clonalTree.py  -i ../Example/Input/simulation200.fasta -o ../Example/Output/clonalTree.abRT.nk -a 0 -r 0 -t 0
+  $ python clonalTree.py  -i ../Example/input/simulation200.fasta -o ../Example/output/clonalTree.abRT.nk -a 0 -r 0 -t 0
   ```
                       
   Output files will be placed as such:
