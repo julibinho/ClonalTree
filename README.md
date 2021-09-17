@@ -88,3 +88,7 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
 
   * The program is distributed under the CeCILL licence 
   * [Feature requests and open issues](https://github.com/julibinho/ClonalTree/issues).
+ 
+ 
+## Reference
+Nika Abdollahi, Anne Langlois De Septenville,  Frederic Davi and Juliana S. Bernardes. Reconstructing the evolutionary history of a BCR lineage with minimum spanning tree and clonotype abundances. 2021
