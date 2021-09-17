@@ -32,7 +32,7 @@ def readFastaAbundance(fastaFile):
 		else:
 			Abundance[ID] = abund
 		
-	return labels, root, arraySeqs, Abundance
+	return labels, root, arraySeqs, Abundance, dico
 #---------------------------------------------------------------------------
 def readFasta(fastaFile):
 	dico = {}
@@ -50,6 +50,22 @@ def readFasta(fastaFile):
 			count = count + 1
 		
 	return labels, root, arraySeqs
+
+#---------------------------------------------------------------------------
+def readFasta2(fastaFile):
+	dico = {}
+	naive = ""
+	labels = [];  arraySeqs = [];
+	count = 1; root  = 0
+
+	for record in SeqIO.parse(fastaFile, "fasta"):
+		if record.id not in dico.keys(): 
+			dico[record.id] = str(record.seq)
+			labels.append(record.id)
+			arraySeqs.append(str(record.seq))
+			count = count + 1
+		
+	return labels, dico
 
 #---------------------------------------------------------------------------
 def readFastaRepeat(fastaFile):
