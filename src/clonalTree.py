@@ -38,7 +38,7 @@ def main():
 
 	#labels, root, arraySeqs, abundance  = readFastaRepeat(fastaFile)
 
-	labels, root, arraySeqs, abundance =  readFastaAbundance(fastaFile)#; print (labels)
+	labels, root, arraySeqs, abundance, dico =  readFastaAbundance(fastaFile)#; print (labels)
 	
 	adjMatrix = createAdjMatrix(arraySeqs) #;print(adjMatrix)
 	
