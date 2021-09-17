@@ -120,7 +120,7 @@ def main():
 	clonalTree = readNKTree(nkTree2, bRooted) #clonal Tree
 	#print (clonalTree.get_ascii(show_internal=True))
 
-	labels, root, arraySeqs, abundance =  readFastaAbundance(fastaFile)
+	labels, root, arraySeqs, abundance, dico =  readFastaAbundance(fastaFile)
 	
 	pathsClonalTree = getAllPathLeaves(clonalTree, labels)
 	pathsGCTree = getAllPathLeaves(GCTree, labels)
