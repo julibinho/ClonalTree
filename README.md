@@ -74,15 +74,15 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
 
   For instance the following command can be run in the src/ folder:
   ```
-  $ python clonalTree.py  -i ../Example/input/simulation200.fasta -o ../Example/output/clonalTree.abRT.nk -a 0 -r 0 -t 0
+  $ python src/clonalTree.py  -i Examples/input/simulation200.fasta -o Examples/output/clonalTree.abRT.nk -a 0 -r 0 -t 0
   ```
                       
   Output files will be placed as such:
   ```
-  ~Example/Output/[seq_alignment_file].nk
+  ~Examples/output/[seq_alignment_file].nk
                   [seq_alignment_file].nk.csv
  ```
- [seq_alignment_file] is the alignement of the clonaly related B cells receptor heavly chain seuqneces.
+ [seq_alignment_file] is the multiple sequence alignement of clonaly-related B cell receptor heavly chain seuqneces.
 
 ## License, Patches, and Ongoing Developements
 
