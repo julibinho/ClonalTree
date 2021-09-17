@@ -4,7 +4,7 @@ from optparse import OptionParser
 import random
 from ete3 import Tree
 import sys 
-sys.path.insert(1, '../clonalTree/')
+sys.path.insert(1, '../src/')
 
 from BasicTree import *
 from BasicSeq  import *
@@ -69,8 +69,9 @@ def main():
 	tree2 = readNKTree(nkTree2, bRooted)
 	#print (tree2.get_ascii(show_internal=True))
 
-	labels, dicSeq  = readFasta2(fastaFile)
+	labels, root, arraySeqs, Abundance, dicSeq = readFastaAbundance(fastaFile)
 	
+
 	cpleaves1 = findCommonAncestorLeaves(tree1, labels)
 	#print (len(cpleaves1))
 
@@ -79,6 +80,7 @@ def main():
 	
 	if len(cpleaves1) != len(cpleaves2):
 		print('ERROR Trees with different amount of nodes', len(cpleaves1), len(cpleaves2))
+	
 
 	score = MRCA(cpleaves1, cpleaves2, dicSeq)
 	

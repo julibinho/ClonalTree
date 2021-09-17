@@ -4,7 +4,7 @@ from optparse import OptionParser
 import random
 from ete3 import Tree
 import sys 
-sys.path.insert(1, '../clonalTree/')
+sys.path.insert(1, '../src')
 
 from BasicTree import *
 from BasicSeq  import *
@@ -92,7 +92,7 @@ def computeCOAR(mapped1, mapped2, matrix, minDist):
 #						Main
 #===================================================================================
 def main():
-	usage = usage = "python MRCA.py -a <nkTree1> -b <nkTree2> -f <fasta>-o <outputFile> \n"
+	usage = usage = "python MRCA.py -a <nkTree1> -b <nkTree2> -f <fasta> \n"
 	parser = OptionParser(usage)
 	parser.add_option("-a", "--nkTree1", dest="nkTree1", help="nk file for gcTree")
 	parser.add_option("-b", "--nkTree2", dest="nkTree2", help="nk file for clonalTree")
@@ -106,7 +106,7 @@ def main():
 	nkTree1 = options.nkTree1
 	nkTree2 = options.nkTree2
 	fastaFile = options.fastaFile
-	outputFile = options.outputFile
+	
 	aR = "0"
 	bR = "1"
 
