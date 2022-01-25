@@ -3,8 +3,12 @@ import random
 import sys 
 from Bio import SeqIO
 
+INF = float('inf') 
 
 #---------------------------------------------------------------------------
+# Basic sequences - here you find basic functions to deal with sequences
+#---------------------------------------------------------------------------
+
 def readFastaAbundance(fastaFile):
 	dico = {}
 	naive = ""; SEP="@"
@@ -33,6 +37,32 @@ def readFastaAbundance(fastaFile):
 			Abundance[ID] = abund
 		
 	return labels, root, arraySeqs, Abundance, dico
+
+#---------------------------------------------------------------------------
+def hamming_distance(chaine1, chaine2):
+	return sum(c1 != c2 for c1, c2 in zip(chaine1, chaine2))
+
+#---------------------------------------------------------------------------
+#create adjacent matrix from colpased sequences by using hamming distance
+def createAdjMatrix(arraySeqs):
+	adjMatrix = np.zeros((len(arraySeqs), len(arraySeqs)))
+
+	for i in range(len(arraySeqs)):
+		#for j in range(i+1, len(arraySeqs)):
+		for j in range(0, len(arraySeqs)):
+			adjMatrix[i][j] = hamming_distance(arraySeqs[i], arraySeqs[j])
+	return adjMatrix
+
+#===================================================================================
+def correctMatrix(adjMatrixNP, visitedNodes):
+   
+	for i in range(len(adjMatrixNP)):
+		for j in range(i, len(adjMatrixNP[i])):
+			if i in visitedNodes and j in visitedNodes:
+				adjMatrixNP[i][j] = INF; adjMatrixNP[j][i] = INF
+	return adjMatrixNP
+
+
 #---------------------------------------------------------------------------
 def readFasta(fastaFile):
 	dico = {}
@@ -96,27 +126,8 @@ def readFastaRepeat(fastaFile):
 	f = open(fastaFile +'.maps', 'w'); f.write(maps); f.close()	
 	return labels, root, arraySeqs, Abundance
 
-#---------------------------------------------------------------------------
-def hamming_distance(chaine1, chaine2):
-	return sum(c1 != c2 for c1, c2 in zip(chaine1, chaine2))
 
-#---------------------------------------------------------------------------
-#create adjacent matrix from colpased sequences by using hamming distance
-def createAdjMatrix(arraySeqs):
-	adjMatrix = np.zeros((len(arraySeqs), len(arraySeqs)))
 
-	for i in range(len(arraySeqs)):
-		#for j in range(i+1, len(arraySeqs)):
-		for j in range(0, len(arraySeqs)):
-			adjMatrix[i][j] = hamming_distance(arraySeqs[i], arraySeqs[j])
-	return adjMatrix
-
-#---------------------------------------------------------------------------
-def makeBoolean(var):
-	if var == '0':
-		return True
-	else:
-		return False
 
 
 

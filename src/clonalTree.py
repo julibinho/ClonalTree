@@ -8,6 +8,12 @@ from BasicSeq import *
 import sys 
 
 
+#---------------------------------------------------------------------------
+def makeBoolean(var):
+	if var == '0':
+		return True
+	else:
+		return False
 
 
 #===================================================================================
@@ -42,7 +48,7 @@ def main():
 	
 	adjMatrix = createAdjMatrix(arraySeqs) #;print(adjMatrix)
 	
-	tree, infoTree = kruskalMST(adjMatrix, root, labels, abundance, useAbundance) #;print (infoTree)
+	tree, infoTree = primMST(adjMatrix, root, labels, abundance, useAbundance) #;print (infoTree)
 	    
 	#print (tree.get_ascii(show_internal=True))
 

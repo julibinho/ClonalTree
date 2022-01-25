@@ -34,7 +34,7 @@ def readNKTree(fileName, root=False):
 	return tree
 
 #===================================================================================
-def costTree3(tree, labels, adjMatrix):
+def costTree(tree, labels, adjMatrix):
 	ctotal = 0; count = 0
 	for node in tree.traverse("preorder"):
 
@@ -130,3 +130,55 @@ def trimming(tree, labels, adjMatrix):
 				grandParent.add_child(removed_node)
 
 	return tree
+
+
+#===================================================================================
+def editTree(t1, adjMatrix, labels):
+	tr = Tree()
+	ardColapsed = []
+	compteur=0
+	for node in t1.traverse("preorder"):
+		if node.is_root():
+			#print ('1')
+			children = node.get_children()
+			for n in children:
+				tr.add_child(name=n.name)
+				#print ('2', n.name)
+		else:
+			G = tr.search_nodes(name=node.name)
+			if (G):
+				children = node.get_children()
+				for n in children:
+					#print ('3', n.name)
+					if n.name not in ardColapsed:
+						colapse = colapseNodes(n.name, children, node.name, adjMatrix, labels, ardColapsed)
+						#print ('==', colapse)
+						if colapse:
+							N = G[0].add_child(name=None) # Adds a empty branch or bifurcation
+							#N = G[0].add_child(name="ni"+str(compteur)) # Adds a empty branch or bifurcation
+							n1 = N.add_child(name=n.name) # Adds current node
+							ardColapsed.append(n.name)
+							#compteur+=1
+							for c in colapse:
+								#print ('col ', c)
+								n2 = N.add_child(name=c)
+								ardColapsed.append(c) # Adds other nodes
+								#print(tr.get_ascii(show_internal=True))
+						else:
+							G[0].add_child(name=n.name)
+	return tr
+	
+
+#===================================================================================
+def colapseNodes(node, lnodes, parent, cost, labels, aldColapsed):
+	colapse = []
+	#print ('---> ', node, lnodes, parent, labels)
+	idNode = labels.index(node); idPar = labels.index(parent)
+	for i in lnodes:
+		idI = labels.index(i.name)
+		#print ('nodes ', node, i.name)
+		if i.name != node and cost[idNode][idI] <= cost[idNode][idPar] and cost[idNode][idI] <= cost[idI][idPar]:
+			#print ('cost ',node, i.name, cost[idNode][idI]);print ('cost P ',node, parent, cost[idNode][idPar])
+			if i.name not in aldColapsed:
+				colapse.append(i.name)
+	return colapse
