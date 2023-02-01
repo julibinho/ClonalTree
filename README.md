@@ -67,14 +67,14 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
 
 ### optional arguments [...options]
 
-  * -a 0, if considering abundance, otherwise -a 1
-  * -r 0, if performing revision, otherwise -r 1
-  * -t 0, if performing trimming tree, otherwise -t 1
+  * -a 1, if considering abundance, otherwise -a 0
+  * -r 1, if performing revision, otherwise -r 0
+  * -t 1, if performing trimming tree, otherwise -t 0
 
 
   For instance the following command can be run in the src/ folder:
   ```
-  $ python src/clonalTree.py  -i Examples/input/simulation200.fasta -o Examples/output/clonalTree.abRT.nk -a 0 -r 0 -t 0
+  $ python src/clonalTree.py  -i Examples/input/simulation200.fasta -o Examples/output/clonalTree.abRT.nk -a 1 -r 1 -t 1
   ```
                       
   Output files will be placed as such:
