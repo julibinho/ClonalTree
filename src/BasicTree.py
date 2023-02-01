@@ -107,6 +107,19 @@ def takeCostAB(adjMatrix, labels, a, b):
 	ai = labels.index(a)
 	bi = labels.index(b)
 	return adjMatrix[ai][bi]
+	
+#===================================================================================
+def getDistances(t):
+	infoCost = ""
+	for node in t.traverse("preorder"):
+		children = node.get_children()
+		for c in children:
+			if (node.name):
+				infoCost += node.name + "," + c.name + "," + str(t.get_distance(node, c)) + "\n"
+	return infoCost
+	
+		
+
 
 #===================================================================================
 def trimming(tree, labels, adjMatrix):
@@ -134,40 +147,59 @@ def trimming(tree, labels, adjMatrix):
 
 #===================================================================================
 def editTree(t1, adjMatrix, labels):
+	
 	tr = Tree()
 	ardColapsed = []
-	compteur=0
+	compteurNodesInternes=1
 	for node in t1.traverse("preorder"):
 		if node.is_root():
-			#print ('1')
 			children = node.get_children()
 			for n in children:
 				tr.add_child(name=n.name)
-				#print ('2', n.name)
 		else:
 			G = tr.search_nodes(name=node.name)
 			if (G):
 				children = node.get_children()
 				for n in children:
-					#print ('3', n.name)
+					
 					if n.name not in ardColapsed:
-						colapse = colapseNodes(n.name, children, node.name, adjMatrix, labels, ardColapsed)
-						#print ('==', colapse)
+						colapse = colapseNodes(n.name, children, node.name, adjMatrix, labels, ardColapsed); #print ('==', colapse)
 						if colapse:
-							N = G[0].add_child(name=None) # Adds a empty branch or bifurcation
-							#N = G[0].add_child(name="ni"+str(compteur)) # Adds a empty branch or bifurcation
-							n1 = N.add_child(name=n.name) # Adds current node
+							distances = updateDistances(node.name, n.name, colapse, adjMatrix, labels)
+							N = G[0].add_child(name='None'+ str(compteurNodesInternes), dist=distances[0]) # Adds a empty branch or bifurcation
+							compteurNodesInternes +=1
+							distA = t1.get_distance(node, n); 
+							
+							compteur=1
+							n1 = N.add_child(name=n.name, dist=distances[compteur]) # Adds current node
 							ardColapsed.append(n.name)
-							#compteur+=1
+							compteur += 1
 							for c in colapse:
-								#print ('col ', c)
-								n2 = N.add_child(name=c)
+								n2 = N.add_child(name=c, dist=distances[compteur])
 								ardColapsed.append(c) # Adds other nodes
-								#print(tr.get_ascii(show_internal=True))
+								compteur +=1
 						else:
-							G[0].add_child(name=n.name)
+							distA = t1.get_distance(node, n); 
+							G[0].add_child(name=n.name, dist=distA)
+	
 	return tr
 	
+
+#===================================================================================
+def updateDistances(parent, node, sisters, cost, labels):
+	distances = []
+	idNode = labels.index(node); idPar = labels.index(parent)
+	costNone = 1
+	for s in sisters:
+		idS = labels.index(s)
+		costNone = max(cost[idS][idPar] - cost[idNode][idPar], cost[idNode][idPar] - cost[idS][idPar], costNone)
+		
+	distances.append(costNone)
+	distances.append(cost[idNode][idPar] - costNone)
+	for s in sisters:
+		idS = labels.index(s)
+		distances.append(cost[idS][idPar] - costNone)
+	return  distances
 
 #===================================================================================
 def colapseNodes(node, lnodes, parent, cost, labels, aldColapsed):
@@ -181,4 +213,5 @@ def colapseNodes(node, lnodes, parent, cost, labels, aldColapsed):
 			#print ('cost ',node, i.name, cost[idNode][idI]);print ('cost P ',node, parent, cost[idNode][idPar])
 			if i.name not in aldColapsed:
 				colapse.append(i.name)
+	#print ("colapse: ", colapse)
 	return colapse

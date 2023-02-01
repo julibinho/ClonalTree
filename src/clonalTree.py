@@ -10,7 +10,7 @@ import sys
 
 #---------------------------------------------------------------------------
 def makeBoolean(var):
-	if var == '0':
+	if var == '1':
 		return True
 	else:
 		return False
@@ -24,9 +24,9 @@ def main():
 	parser = OptionParser(usage)
 	parser.add_option("-i", "--fastaFile", dest="fastaFile",  help="sequences in fasta format")
 	parser.add_option("-o", "--outputFile", dest="outputFile",  help="output file")
-	parser.add_option("-a", "--useAbundance", dest="useAbundance",  help="if 0 it uses abundance")
-	parser.add_option("-r", "--revision", dest="revision",  help="if 0 it performs revision")
-	parser.add_option("-t", "--trim", dest="trim",  help="if 0 it performs trimming tree")
+	parser.add_option("-a", "--useAbundance", dest="useAbundance",  help="if 1 it uses abundance")
+	parser.add_option("-r", "--revision", dest="revision",  help="if 1 it performs revision")
+	parser.add_option("-t", "--trim", dest="trim",  help="if 1 it performs trimming tree")
 	
 	(options, args) = parser.parse_args()
 	if len(sys.argv) < 5:
@@ -41,6 +41,8 @@ def main():
 	useAbundance = makeBoolean(useAbundance)
 	revision = makeBoolean(revision)
 	trim =  makeBoolean(trim)
+	
+	print ("Parameter setting = useAbundance: ", useAbundance, "; revision: ", revision, "; trim:", trim)
 
 	#labels, root, arraySeqs, abundance  = readFastaRepeat(fastaFile)
 
@@ -50,13 +52,20 @@ def main():
 	
 	tree, infoTree = primMST(adjMatrix, root, labels, abundance, useAbundance) #;print (infoTree)
 	    
-	#print (tree.get_ascii(show_internal=True))
+	
 
 	if trim:
 		tree = trimming(tree, labels, adjMatrix) #;print (tree.get_ascii(show_internal=True))
 	
 	if revision:
 		tree = editTree(tree, adjMatrix, labels)
+	
+	
+
+	infoTree = getDistances(tree)
+	
+	#print (tree.get_ascii(show_internal=True))
+	
 	tree.write(format=1, outfile=outputFile)
 	f = open(outputFile +'.csv', 'w')
 	f.write(infoTree); f.close()
