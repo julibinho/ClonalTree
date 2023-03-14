@@ -1,6 +1,6 @@
 # ClonalTree
 
-**Reconstructing the evolutionary history of a BCR lineage with minimum spanning tree and clonotype abundances**
+**Reconstructing B cell lineage trees with minimum spanning tree and genotype abundances**
 
 ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates genotype abundance into a minimum spanning tree to infer maximum parsimony trees.
 
@@ -91,4 +91,4 @@ ClonalTree is a new algorithm to reconstruct BCR lineage trees that incorporates
  
  
 ## Reference
-Nika Abdollahi, Anne Langlois De Septenville,  Frederic Davi and Juliana S. Bernardes. Reconstructing the evolutionary history of a BCR lineage with minimum spanning tree and clonotype abundances. 2021
+Nika Abdollahi, Anne Langlois De Septenville,  Frederic Davi and Juliana S. Bernardes. Reconstructing B cell lineage trees with minimum spanning tree and genotype abundances. BMC Bioinformatics (2023): 24(1) 70
